@@ -24,12 +24,11 @@
       <br>
 
       <div class="text-center">
-        <!-- <a href="/friends"><button class="btn btn-lg btn-danger"><span class="fa fa-credit-card"></span> Make Reservation</button></a> -->
         <a href="/"><button class="btn btn-lg btn-default"><span class="fa fa-home"></span></button></a>
       </div>
     </div>
 
-    <div class="row">
+    <!-- <div class="row">
       <div class="col-lg-12">
 
         <div class="card">
@@ -42,7 +41,135 @@
         </div>
 
       </div>
-    </div>
+    </div> -->
+
+    <div class="row">
+            <div class="col-lg-12">
+      
+                <div class="jumbotron">
+                    <h3 class="text-left">Survey</h3>
+                    <hr>
+
+                    <!-- Create Questions and drop-->
+                    <form>
+                        <div class="form-group searchTerm">
+                            <label for="trainName">Name:</label>
+                            <input type="text" class="form-control" id="userName">
+                        </div>
+                        <div class="form-group numberRecord">
+                            <label for="destination">Photo Link:</label>
+                            <input type="text" class="form-control" id="userPhoto">
+                        </div>
+                    </form>
+                    <!-- Question 1 -->
+                    <h6 class="text-left">How Much do you love dumplings?</h6>
+                    <div class="form-group">
+                        <select class="form-control" id="q1">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+
+                    <!-- Question 2 -->
+                    <h6 class="text-left">How Much do you love The Office?</h6>
+                    <div class="form-group">
+                        <select class="form-control" id="q2">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+
+                    <!-- Question 3 -->
+                    <h6 class="text-left">How Much do you love your mom?</h6>
+                    <div class="form-group">
+                        <select class="form-control" id="q3">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+
+                    <!-- Question 4 -->
+                    <h6 class="text-left">How Much do you love Seattle, Washington?</h6>
+                    <div class="form-group">
+                        <select class="form-control" id="q4">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+
+                    <!-- Question 5 -->
+                    <h6 class="text-left">How Much do you love Coding?</h6>
+                    <div class="form-group">
+                        <select class="form-control" id="q5">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+
+                    <!-- Question 6 -->
+                    <h6 class="text-left">How Much do you love Eating?</h6>
+                    <div class="form-group">
+                        <select class="form-control" id="q6">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+
+                    <!-- Submit Button-->
+                    <br>
+                    <!-- <div class="text-left">
+                        <a><button class="btn btn-lg btn-default" id="submitButton">Submit</button></a>
+                    </div> -->
+
+
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" id="submitButton">
+                      Submit
+                    </button>
+                    
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">You Found a Friend</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body" id="bestFriendModal">
+                            Your Best Friend Is ..
+                          </div>
+                          <div class="modal-footer">
+                            <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+                            <button type="button" class="btn btn-primary" id="startOverButton">Find Another Friend</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                </div>
+      
+            </div>
+          </div>
 
 
     <footer class="footer mt-4">
@@ -60,9 +187,53 @@
 <!-- BELOW CODE IS CRITICAL. IT HANDLES HOW FORM DATA IS LOADED FROM OUR SERVER -->
 <script type="text/javascript">
 
+    // var friends = require("../data/friends");
+
   // In this code, jQuery is used to "download" the data from our server
   // We then dynamically display this content in our table. This is very similar to the group projects you just completed.
   // It's also very similar to the NYT search application. In fact, I copied a ton of code from there.
+
+  //CREATE SURVEY LOGIC AND HTML
+
+   $("#submitButton").on("click", function(event) {
+    
+        var userName = $("#userName").val();
+        var userPhoto = $("#userPhoto").val();
+
+        var q1 = $("#q1").val();
+        var q2 = $("#q2").val();
+        var q3 = $("#q3").val();
+        var q4 = $("#q4").val();
+        var q5 = $("#q5").val();
+        var q6 = $("#q6").val();
+
+
+        //make object
+        var userInputObject = {
+            "name": userName,
+            "photo":userPhoto,
+            "scores":[
+                q1,
+                q2,
+                q3,
+                q4,
+                q5,
+                q6
+            ]
+        }
+
+        // NEED TO FINISH COMPARISON LOGIC
+        var bestFriend = "Adam"//closest match based on input data
+        var bestFriendInput = $("#bestFriendModal");
+        bestFriendInput.text("Your best friend is: " + bestFriend);
+        //compare against other friend objects
+        console.log(userInputObject);
+   });
+
+    $("#startOverButton").on("click", function(event) {
+        location.reload();
+    });
+
 
   function runFriendsQuery() {
     // The AJAX function uses the URL of our API to GET the data associated with it (initially set to localhost)

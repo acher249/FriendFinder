@@ -5,6 +5,7 @@
 // But you could have it be an empty array as well.
 // ===============================================================================
 
+//answers only out of 5
 var friends = [
   {
     "name":"Ahmed",
@@ -15,10 +16,6 @@ var friends = [
         4,
         4,
         5,
-        1,
-        2,
-        5,
-        4,
         1
       ]
   },
@@ -27,15 +24,11 @@ var friends = [
     "photo":"https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
     "scores":[
         1,
-        12,
-        4,
-        4,
-        10,
-        1,
-        7,
         5,
-        7,
-        7
+        4,
+        4,
+        2,
+        1
       ]
   },
   {
@@ -47,11 +40,7 @@ var friends = [
         1,
         4,
         3,
-        1,
-        2,
-        1,
-        8,
-        9
+        1
       ]
   }
 ];
